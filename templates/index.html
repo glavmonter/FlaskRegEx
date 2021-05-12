@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Python regex estimator</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/jq.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <div id="main">
-    <div id="header"><a href="{{ url_for('index') }}"><span id="title">RegEx</span></a> </div>
+    <div id="header"><a href="{{ url_for('index') }}"><span id="title">Python regex estimator</span></a> </div>
     <form id="regexForm" action method="post">
         <table>
             <tbody>
@@ -21,12 +28,12 @@
                             <tr>
                                 <td><label id="regex_label" for="regex">Your regular expression:</label></td>
                                 <td id="invalid_regex">&nbsp;</td>
-                            </tr>
+                            </tr> {# label: Your regular expression: #}
                             <tr>
                                 <td colspan="2">
-                                    <input id="regex" class="round" type="text" name="regex">
+                                    <input id="regex" class="round" type="text" name="regex" onkeyup="bufferKey(event);">
                                 </td>
-                            </tr>
+                            </tr> {# Input regex #}
                             <tr>
                                 <td colspan="2" style="text-align: center;">
                                     <div id="flag_buttons">
@@ -39,6 +46,40 @@
                                     <input type="hidden" id="multiline" name="multiline" value="0">
                                     <input type="hidden" id="dotall" name="dotall" value="0">
                                     <input type="hidden" id="verbose" name="verbose" value="0">
+                                </td>
+                            </tr> {# Buttons #}
+                            <tr>
+                                <td colspan="2">
+                                    <label id="test_string_label" for="test_string">Your test string:</label>
+                                </td>
+                            </tr> {# Test string Label #}
+                            <tr>
+                                <td colspan="2">
+                                    <textarea id="test_string" class="round" name="test_string"
+                                              rows="3" cols="30" onkeyup="bufferKey(event);"></textarea>
+                                </td>
+                            </tr> {# Input test string textarea #}
+                            <tr>
+                                <td colspan="2">
+                                    <table id="result_capture">
+                                        <tr>
+                                            <td><span id="result_label">Match results:</span></td>
+                                            <td><span id="captures_label">Match captures:</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="result_td">
+                                                <div id="result" class="round">
+                                                    <div id="result_string"></div>
+                                                    <div id="indicator">
+                                                        <img src="{{ url_for('static', filename='img/indicator.gif') }}" alt="Activity indicator">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="captures_td">
+                                                <div id="captures" class="round"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                             </tbody>
@@ -59,6 +100,13 @@
         }
     );
 
+    $('#regex,#test_string').focus(
+        function () {
+            highlight($(this));
+        }
+    ).focusout(function () {
+        unhighlight($(this));
+    });
 </script>
 
 </body>
