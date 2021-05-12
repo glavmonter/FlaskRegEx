@@ -1,3 +1,16 @@
+body {
+    text-align: center;
+    color: #888888;
+    font-size-adjust: none;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-family: Helvetica, arial, freesans, clean, sans-serif;
+    font-size: 1em;
+    margin: 0;
+}
+
 div#header {
     margin: 0em 0px 0.5em 0px;
     text-align: center;
@@ -7,6 +20,16 @@ div#header a {
     text-decoration: none;
 }
 
+div#main {
+    margin: 0px auto;
+    max-width: 900px;
+    text-align: left;
+}
+
+div#main table {
+    width: 100%;
+}
+
 span#title {
     font-family: Helvetica, arial, freesans, clean, sans-serif;
     font-size: 5em;
@@ -14,4 +37,93 @@ span#title {
     color: black;
     letter-spacing: normal;
     text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td {
+    padding: 0;
+}
+
+td#left_slash {
+    text-align: left;
+}
+
+td#right_slash {
+    text-align: right;
+}
+
+span.slash {
+    display: inline;
+    font-size: 42px;
+    font-weight: bold;
+    color: #666666;
+    /*line-height: 58%;*/
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+input#regex {
+    width: 100%;
+    margin-right: 5px;
+    padding: 8px;
+    font-size: 14px;
+    background: #fafafa;
+}
+
+.round {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    color: #ededed;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+
+#flag_buttons {
+    margin: 1em 0 1em 0;
+}
+
+span.check {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 8px 0 8px;
+    border: 1px solid #d4d4d4;
+}
+
+span.check.checked {
+    background-image: -moz-linear-gradient(#ffffd0, #ffffa0);
+    background-image: -webkit-linear-gradient(#ffffd0, #ffffa0);
+    background-image: linear-gradient(#ffffd0, #ffffa0);
+    background-repeat: repeat-x;
+    background-color: #ffffa0;
+    color: #555555;
+}
+
+.button {
+    background: #eaeaea;
+    cursor: pointer;
+    border-radius: 5px;
+    background-image: -moz-linear-gradient(#fafafa, #eaeaea);
+    background-image: -webkit-linear-gradient(#fafafa, #eaeaea);
+    background-image: linear-gradient(#fafafa, #eaeaea);
+    background-repeat: repeat-x;
+}
+
+.button:hover {
+    background-image: -moz-linear-gradient(#eaeaea, #dddddd);
+    background-image: -webkit-linear-gradient(#eaeaea, #dddddd);
+    background-image: linear-gradient(#eaeaea, #dddddd);
+    background-repeat: repeat-x;
+    background-color: #dddddd;
+    color: #555555;
 }

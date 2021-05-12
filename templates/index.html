@@ -13,10 +13,53 @@
     <form id="regexForm" action method="post">
         <table>
             <tbody>
-
+                <tr>
+                    <td id="left_slash" class="slash"><span class="slash">/</span> </td>
+                    <td>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td><label id="regex_label" for="regex">Your regular expression:</label></td>
+                                <td id="invalid_regex">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input id="regex" class="round" type="text" name="regex">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center;">
+                                    <div id="flag_buttons">
+                                        <span id="ignorecase_span" class="check button">IGNORECASE</span>
+                                        <span id="multiline_span" class="check button">MULTILINE</span>
+                                        <span id="dotall_span" class="check button">DOTALL</span>
+                                        <span id="verbose_span" class="check button">VERBOSE</span>
+                                    </div>
+                                    <input type="hidden" id="ignorecase" name="ignorecase" value="0">
+                                    <input type="hidden" id="multiline" name="multiline" value="0">
+                                    <input type="hidden" id="dotall" name="dotall" value="0">
+                                    <input type="hidden" id="verbose" name="verbose" value="0">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td id="right_slash" class="slash"><span class="slash">/</span></td>
+                </tr>
             </tbody>
         </table>
     </form>
 </div>
+
+<script type="text/javascript" charset="UTF-8">
+    $('#ignorecase_span,#multiline_span,#dotall_span,#verbose_span').click(
+        function () {
+            const input_id = $(this).attr('id').replace(/(.*?)_span/, '$1');
+            toggleFlag(input_id, $(this));
+        }
+    );
+
+</script>
+
 </body>
 </html>
